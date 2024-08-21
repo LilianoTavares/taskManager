@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   Post,
+  Delete,
   Body,
   Patch,
   Param,
@@ -12,6 +13,7 @@ import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 import { TaskDto } from './dto/task.dto';
+//import { DeleteTaskDto } from './dto/delete-task.dto';
 
 @ApiTags('tasks')
 @Controller('tasks')
@@ -56,5 +58,10 @@ export class TasksController {
     @Body() updateTaskStatusDto: UpdateTaskStatusDto,
   ): Promise<TaskDto> {
     return this.tasksService.updateStatus(id, updateTaskStatusDto);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.tasksService.delete(id);
   }
 }

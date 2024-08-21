@@ -115,6 +115,45 @@ Esta é uma API de gerenciamento de tarefas desenvolvida usando Node.js, TypeScr
     "createdAt": "timestamp"
   }
   ```
+### Excluir uma tarefa
+
+- **Endpoint:** `DELETE /tasks/:id`
+- **Descrição:** Exclui uma tarefa existente pelo ID.
+- **Parâmetros:**
+
+    - `id` (path): O ID da tarefa a ser excluída.
+
+- **Saída:**
+
+    ```json
+    {
+      "id": "string",
+      "title": "string",
+      "description": "string",
+      "status": "PENDING | IN_PROGRESS | DONE",
+      "createdAt": "timestamp"
+    }
+    ```
+
+### Exemplo de solicitação
+
+Para excluir uma tarefa com ID `123`, você pode fazer uma solicitação DELETE para:
+
+DELETE http://localhost:3000/tasks/123
+
+### Exemplo de resposta
+
+```json
+{
+  "id": "123",
+  "title": "Sample Task",
+  "description": "This is a sample task.",
+  "status": "PENDING",
+  "createdAt": "2024-08-21T18:00:00Z"
+}
+
+
+
 
 ## Swagger
 
