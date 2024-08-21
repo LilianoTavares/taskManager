@@ -1,11 +1,7 @@
-import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum } from 'class-validator';
-import { Status } from '@prisma/client';
+import { TaskStatus } from '../enums/task-status.enum';
 
 export class UpdateTaskStatusDto {
-  @ApiProperty({ description: 'The status of the task', enum: Status })
-  @IsEnum(Status, {
-    message: 'Status must be one of: PENDING, IN_PROGRESS, DONE',
-  })
-  status: Status;
+  @IsEnum(TaskStatus)
+  status: TaskStatus;
 }

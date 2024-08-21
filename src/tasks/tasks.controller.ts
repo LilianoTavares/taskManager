@@ -32,6 +32,11 @@ export class TasksController {
     return this.tasksService.createTask(createTaskDto);
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.tasksService.findOne(id);
+  }
+
   @Get()
   @ApiOperation({ summary: 'Get all tasks' })
   @ApiResponse({
@@ -54,7 +59,7 @@ export class TasksController {
   @ApiResponse({ status: 400, description: 'Invalid status value.' })
   @ApiResponse({ status: 404, description: 'Task not found.' })
   updateStatus(
-    @Param('id', ParseUUIDPipe) id: string,
+    @Param('id') id: string,
     @Body() updateTaskStatusDto: UpdateTaskStatusDto,
   ): Promise<TaskDto> {
     return this.tasksService.updateStatus(id, updateTaskStatusDto);
